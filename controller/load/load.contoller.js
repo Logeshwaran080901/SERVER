@@ -248,6 +248,7 @@ async function getAllLoad(req, res) {
                     payedtolabour: 1,
                     active: 1,
                     type:1,
+                    transport:1,
                     labourname: '$labourData.labourname', // Include the labour name from the joined labour data
                     brokername: '$brokerData.brokername',  // Include the broker name from the joined broker data
                     companyname: '$companyData.companyname'  // Include the company name from the joined company data
