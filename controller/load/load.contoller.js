@@ -257,6 +257,7 @@ async function getAllLoad(req, res) {
         ])
             .then(results => {
                 if(results.length){
+                    results.sort((a, b) => a.date - b.date);
                     res(200,results);
                 }else{
                     res(404,"Load Data Not Found")
