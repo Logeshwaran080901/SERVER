@@ -75,24 +75,23 @@ async function updatemany(req, type, data, res) {
             { ...req, [type]: { [type]: false } },
             { $set: { [type]: { [type]: true, billid: data._id } } }
         );
-        if (!result.modifiedCount) {
-
-            await billingSchema.deleteOne({ _id: data._id })
-                .then(async (data1) => {
-
-                    if (data1.deletedCount) {
-                        res(404, 'already billed')
-                    } else {
-                        res(404, 'wows something thing is wrong')
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                    res(404, 'failed');
-                });
-        } else {
             res(200, result.modifiedCount)
-        }
+
+        // if (!result.modifiedCount) {
+            // await billingSchema.deleteOne({ _id: data._id })
+                // .then(async (data1) => {
+                    // if (data1.deletedCount) {
+                        // res(404, 'already billed')
+                    // } else {
+                        // res(404, 'wows something thing is wrong')
+                    // }
+                // })
+                // .catch((err) => {
+                    // console.log(err);
+                    // res(404, 'failed');
+                // });
+        // } else {
+        // }
     } catch (error) {
         res(500, error)
     }
